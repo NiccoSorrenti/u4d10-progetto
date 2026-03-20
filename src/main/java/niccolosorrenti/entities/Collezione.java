@@ -4,6 +4,8 @@ import niccolosorrenti.exceptions.CustomException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Collezione {
 
@@ -18,5 +20,13 @@ public class Collezione {
         } else {
             listaGiochi.add(gioco);
         }
+    }
+
+    public Optional<Gioco> ricercaPerId(int id) {
+        return listaGiochi.stream().filter(gioco -> gioco.getIdGioco() == id).findFirst();
+    }
+
+    public List<Gioco> ricercaPerPrezzo(int prezzo) {
+        return listaGiochi.stream().filter(gioco -> gioco.getPrezzo() < prezzo).collect(Collectors.toList());
     }
 }

@@ -11,6 +11,5 @@ public class Application {
         Videogioco videogioco = new Videogioco(1, "Fifa", 2026, 70, "Xbox", 90, Genere.SPORT);
 
 
-        System.out.println(collezione.aggiungiGioco(videogioco));
     }
 }
