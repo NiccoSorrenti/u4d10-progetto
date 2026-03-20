@@ -2,9 +2,7 @@ package niccolosorrenti.entities;
 
 import niccolosorrenti.exceptions.CustomException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Collezione {
@@ -39,12 +37,23 @@ public class Collezione {
     }
 
     public void rimozioneGioco(int id) {
-        Optional<Gioco> g = ricercaPerId(id);
-        listaGiochi.remove(g);
+        listaGiochi.remove(id);
     }
 
     public void aggiornaGioco(int id, Gioco nuovoGioco) {
         rimozioneGioco(id);
         aggiungiGioco(nuovoGioco);
+    }
+
+    public void mostraStatistiche() {
+        long numeroVidegiochi = listaGiochi.stream().filter(gioco -> gioco instanceof Videogioco).count();
+        long numeroGiochiDaTavolo = listaGiochi.stream().filter(gioco -> gioco instanceof GiocoDaTavolo).count();
+        List<Gioco> giocoConPrezzoPiuAlto = listaGiochi.stream().sorted(Comparator.comparing(gioco -> gioco.getPrezzo())).limit(1).toList();
+        OptionalDouble mediaPrezzi = listaGiochi.stream().mapToInt(gioco -> gioco.getPrezzo()).average();
+
+        System.out.println("Numero videogiochi: " + numeroVidegiochi);
+        System.out.println("Numero giochi da tavolo: " + numeroGiochiDaTavolo);
+        System.out.println("Gioco con prezzo più alto: " + giocoConPrezzoPiuAlto);
+        System.out.println("Media prezzi di tutti gli elementi: " + mediaPrezzi);
     }
 }
