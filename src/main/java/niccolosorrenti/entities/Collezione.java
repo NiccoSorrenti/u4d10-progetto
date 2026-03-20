@@ -29,4 +29,22 @@ public class Collezione {
     public List<Gioco> ricercaPerPrezzo(int prezzo) {
         return listaGiochi.stream().filter(gioco -> gioco.getPrezzo() < prezzo).collect(Collectors.toList());
     }
+
+    public List<GiocoDaTavolo> ricercaPerNumeroGiocatori(int numGiocatori) {
+        return listaGiochi.stream()
+                .filter(gioco -> gioco instanceof GiocoDaTavolo)
+                .map(gioco -> (GiocoDaTavolo) gioco)
+                .filter(gioco -> gioco.getNumeroGiocatori() == numGiocatori)
+                .collect(Collectors.toList());
+    }
+
+    public void rimozioneGioco(int id) {
+        Optional<Gioco> g = ricercaPerId(id);
+        listaGiochi.remove(g);
+    }
+
+    public void aggiornaGioco(int id, Gioco nuovoGioco) {
+        rimozioneGioco(id);
+        aggiungiGioco(nuovoGioco);
+    }
 }
