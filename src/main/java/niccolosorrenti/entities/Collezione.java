@@ -50,7 +50,6 @@ public class Collezione {
         rimozioneGioco(id);
         aggiungiGioco(nuovoGioco);
         System.out.println("il gioco è stato aggiornato");
-        System.out.println(listaGiochi);
 
     }
 
