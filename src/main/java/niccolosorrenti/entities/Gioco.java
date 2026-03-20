@@ -13,6 +13,10 @@ public abstract class Gioco {
         this.prezzo = prezzo;
     }
 
+    public Gioco() {
+
+    }
+
     public int getIdGioco() {
         return idGioco;
     }

@@ -29,9 +29,11 @@ public class Videogioco extends Gioco {
     @Override
     public String toString() {
         return "Videogioco{" +
-                "piattaforma='" + piattaforma + '\'' +
+                "titolo= " + titolo +
+                " piattaforma='" + piattaforma + '\'' +
                 ", durataDiGioco=" + durataDiGioco +
                 ", genere=" + genere +
+                ", prezzo=" + prezzo +
                 '}';
     }
 }
