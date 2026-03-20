@@ -15,7 +15,7 @@ public class Application {
         Videogioco videogioco2 = new Videogioco(3, "Cyberpunk", 2024, 80, "PC", 1000, Genere.GDR);
         GiocoDaTavolo giocoDaTavolo = new GiocoDaTavolo(2, "Risiko", 1990, 60, 8, 60);
         Gioco gioco = new Gioco() {
-            
+
         };
 
         Scanner scanner = new Scanner(System.in);
@@ -87,6 +87,7 @@ public class Application {
                         collezione.rimozioneGioco(idDaRimuovere);
                         break;
                     case 7:
+                        System.out.println("Inserisci l'ID del gioco che vuoi aggiornare: ");
                         int id = Integer.parseInt(scanner.nextLine());
                         collezione.aggiornaGioco(id, videogioco2);
                         break;
